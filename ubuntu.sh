@@ -15,7 +15,7 @@ yes | sudo apt upgrade
 yes | sudo apt install build-essential nasm
 
 # Util
-yes | sudo apt install git tree pv zsh nasm valgrind linux-tools powertop hwloc
+yes | sudo apt install git tree pv zsh valgrind linux-tools powertop hwloc
 
 # rustup (curl required)
 [ ! -e "$HOME/.cargo" ] && curl https://sh.rustup.rs -sSf | sh

@@ -27,7 +27,7 @@ if [ ! -e "$HOME/.anyenv" ]; then
     mkdir -p ~/.anyenv/plugins
 fi
 
-if [ ! -e "$HOME/.anyenv/plugins" ]; then
+if [ ! -e "$HOME/.anyenv/plugins/anyenv-update" ]; then
     git clone https://github.com/znz/anyenv-update.git ~/.anyenv/plugins/anyenv-update
 fi
 

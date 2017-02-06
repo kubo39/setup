@@ -22,8 +22,11 @@ yes | sudo apt install git tree pv zsh valgrind linux-tools-common powertop hwlo
 
 # anyenv (git required)
 #   anyenv's setup is in https://github.com/kubo39/dotfiles/setup.sh
-[ ! -e "$HOME/.anyenv" ] && git clone https://github.com/riywo/anyenv ~/.anyenv
-mkdir -p ~/.anyenv/plugins
+if [ ! -e "$HOME/.anyenv" ]; then
+    git clone https://github.com/riywo/anyenv ~/.anyenv
+    mkdir -p ~/.anyenv/plugins
+fi
+
 if [ ! -e "$HOME/.anyenv/plugins" ]; then
     git clone https://github.com/znz/anyenv-update.git ~/.anyenv/plugins/anyenv-update
 fi

@@ -1,8 +1,12 @@
 #!/bin/bash
 #  Setup script for Ubuntu16.04.
 
-# FIXME: remove 'e'?
 set -xue
+
+# utility
+has() {
+    type "$1" > /dev/null 2>&1
+}
 
 # update apt
 yes | sudo apt update
@@ -15,10 +19,15 @@ yes | sudo apt upgrade
 yes | sudo apt install build-essential nasm
 
 # Util
-yes | sudo apt install git tree pv zsh valgrind linux-tools-common powertop hwloc
+yes | sudo apt install git tree pv zsh valgrind linux-tools-common powertop hwloc unzip
 
-# rustup (curl required)
+# rustup
 [ ! -e "$HOME/.cargo" ] && curl https://sh.rustup.rs -sSf | sh
+
+# ripgrep
+if has cargo; then
+    cargo install ripgrep
+fi
 
 # anyenv (git required)
 #   anyenv's setup is in https://github.com/kubo39/dotfiles/setup.sh
@@ -31,7 +40,7 @@ if [ ! -e "$HOME/.anyenv/plugins/anyenv-update" ]; then
     git clone https://github.com/znz/anyenv-update.git ~/.anyenv/plugins/anyenv-update
 fi
 
-# dotfiles
+# dotfiles (git required)
 if [ ! -e "$HOME/dotfiles" ]; then
     git clone https://github.com/kubo39/dotfiles ~/dotfiles
     sh ~/dotfiles/setup.sh

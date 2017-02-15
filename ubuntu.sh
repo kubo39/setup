@@ -16,7 +16,7 @@ yes | sudo apt upgrade
 # env LANGUAGE=C LC_MESSAGES=C xdg-user-dirs-gtk-update
 
 # develop
-yes | sudo apt install build-essential nasm
+yes | sudo apt install build-essential nasm pkg-config linux-headers-generic cmake
 
 # Util
 yes | sudo apt install git tree pv zsh valgrind linux-tools-common powertop hwloc unzip
@@ -44,4 +44,9 @@ fi
 if [ ! -e "$HOME/dotfiles" ]; then
     git clone https://github.com/kubo39/dotfiles ~/dotfiles
     sh ~/dotfiles/setup.sh
+fi
+
+# .emacs.d (git required)
+if [ ! -e "$HOME/.emacs.d" ]; then
+    git clone https://github.com/kubo39/.emacs.d ~/.emacs.d
 fi

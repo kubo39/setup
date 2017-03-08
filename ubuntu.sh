@@ -24,9 +24,21 @@ yes | sudo apt install git tree pv zsh valgrind linux-tools-common powertop hwlo
 # rustup
 [ ! -e "$HOME/.cargo" ] && curl https://sh.rustup.rs -sSf | sh
 
-# ripgrep
+# rust-src
+if has rustup; then
+    rustup component add rust-src
+fi
+
+# ripgrep,racer,rustfmt,rusty-tags,itm,xargo
 if has cargo; then
     cargo install ripgrep
+    cargo install racer
+    cargo install rustfmt
+    cargo install rusty-tags
+    if has rustup; then
+        rustup run nightly cargo install itm
+        rustup run nightly cargo install xargo
+    fi
 fi
 
 # anyenv (git required)

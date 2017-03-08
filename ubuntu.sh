@@ -19,7 +19,7 @@ yes | sudo apt upgrade
 yes | sudo apt install build-essential nasm pkg-config linux-headers-generic cmake
 
 # Util
-yes | sudo apt install git tree pv zsh valgrind linux-tools-common powertop hwloc unzip
+yes | sudo apt install git tree pv zsh valgrind linux-tools-common powertop hwloc unzip tmux
 
 # rustup
 [ ! -e "$HOME/.cargo" ] && curl https://sh.rustup.rs -sSf | sh
